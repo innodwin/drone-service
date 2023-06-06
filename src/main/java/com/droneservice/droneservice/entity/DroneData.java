@@ -80,5 +80,16 @@ public class DroneData {
     @NotFound(action = NotFoundAction.EXCEPTION)
     @NotNull
     private DroneModel model;
+    
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "dronestateid",
+            referencedColumnName = "stateid")
+    @NotFound(action = NotFoundAction.EXCEPTION)
+    @NotNull
+    private DroneState droneState;
+    
+    @OneToMany(mappedBy = "droneData", fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<AuditTraceBattery> auditTraceBattery;
 
 }
