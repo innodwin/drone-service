@@ -5,7 +5,12 @@
  */
 package com.droneservice.droneservice.service;
 
+import com.droneservice.droneservice.dto.request.BatteryUpdateRequest;
 import com.droneservice.droneservice.dto.request.DroneRegistrationRequest;
+import com.droneservice.droneservice.entity.DroneData;
+import com.droneservice.droneservice.entity.DroneState;
+import com.droneservice.droneservice.response.MessageResponse;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 /**
@@ -14,4 +19,13 @@ import org.springframework.http.ResponseEntity;
  */
 public interface DroneRegistrationService {
    ResponseEntity<?> registerDrone(DroneRegistrationRequest request); 
+   DroneData getSingleDroneData(Long id);
+   List<DroneData> findAll(int pageNo, int pageSize);
+   DroneData getDroneByDroneIdAndDroneStatus(Long droneId, DroneState droneStatus);
+   List<DroneData> getAllAvailableDroneForOrderLoading();
+   MessageResponse getDroneBatteryLevel(Long id);
+   MessageResponse updateBattery(BatteryUpdateRequest batteryUpdateRequest);
+   List<DroneData> getAllRegisteredDrone();
+   ResponseEntity<?> flagReturnStatus(Long droneId);
+   
 }

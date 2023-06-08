@@ -57,9 +57,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public ResponseEntity<?> create(UserRequest request) {
         User newUser;
+        Long userRole = 0L;
         try {
-            Long userRole = request.getRole();
+            if (request.getRole() == null) {
+                userRole = 2L;
+            } else {
+                if (request.getRole() == 0L) {
+                    userRole = 2L;
+                } else {
+                    userRole = request.getRole();
+                }
+            }
+            //request.getRole()
             Role role = roleRepository.findById(userRole).orElse(null);
+            System.out.println("role " + role.getRoleDescription());
             newUser = new User();
             newUser.setUserName(request.getUsername());
             newUser.setUserFirstName(request.getFirstName());
@@ -72,6 +83,7 @@ public class UserServiceImpl implements UserService {
             newUser = userRepository.save(newUser);
 
         } catch (DataIntegrityViolationException ex) {
+            System.out.println("ex " + ex.getMessage());
             return ResponseEntity
                     .badRequest()
                     .body(new MessageResponse("Error: Username or email is already taken!", HttpStatus.BAD_REQUEST.value()));

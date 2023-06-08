@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRequest {
-      private Long id;
+      //private Long id;
 
     @NotNull(message = "username cannot be null")
     @NotEmpty(message = "username cannot be empty")
@@ -39,6 +39,6 @@ public class UserRequest {
     @NotEmpty(message = "password cannot be empty")
     private String password;
 
-    @NotNull(message = "role cannot be null")
+//    @NotNull(message = "role cannot be null")
     private Long role;
 }

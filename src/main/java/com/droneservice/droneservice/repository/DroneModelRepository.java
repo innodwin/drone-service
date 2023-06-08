@@ -13,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Hp
  */
 public interface DroneModelRepository extends  JpaRepository<DroneModel, Long> {
-    
+    DroneModel findByModelId(Long modelId);
 }
