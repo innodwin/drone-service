@@ -45,4 +45,8 @@ public class DroneState {
     @Column(name = "created_at", nullable = false)
     @NotNull
     private LocalDateTime createdAt;
+      public DroneState(Long stateId, String description) {
+        this.stateId = stateId;
+        this.description = description;
+    }
 }

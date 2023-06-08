@@ -5,10 +5,12 @@
  */
 package com.droneservice.droneservice.service;
 
+import org.springframework.http.ResponseEntity;
+
 /**
  *
  * @author Hp
  */
 public interface OrderItemService {
-    
+    ResponseEntity<?> changeProductDeliveryStatus(Long orderId, Long productId);
 }

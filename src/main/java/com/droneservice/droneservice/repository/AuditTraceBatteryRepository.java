@@ -6,6 +6,8 @@
 package com.droneservice.droneservice.repository;
 
 import com.droneservice.droneservice.entity.AuditTraceBattery;
+import com.droneservice.droneservice.entity.DroneData;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +15,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Hp
  */
 public interface AuditTraceBatteryRepository  extends  JpaRepository<AuditTraceBattery, Long>{
-    
+     List<AuditTraceBattery> findByDroneData(DroneData droneid);
 }
