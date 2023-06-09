@@ -33,8 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 @Tag(name = "Authentication Service Controller  ", description = "Auth Controller Exposes REST APIs for Account registration and authentication service")
-@ApiResponse(responseCode = "201",
-        description = "HTTP Status 201 Created")
+
 public class AuthController {
 
     @Autowired
@@ -42,6 +41,8 @@ public class AuthController {
     @Autowired
     private final UserService userService;
 
+    @ApiResponse(responseCode = "201",
+            description = "HTTP Status 201 Created")
     @PostMapping({"/register"})
     public ResponseEntity<?> accountRegistration(@RequestBody @Valid UserRequest request) {
         return userService.create(request);
