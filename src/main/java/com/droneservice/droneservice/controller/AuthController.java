@@ -11,6 +11,9 @@ import com.droneservice.droneservice.dto.request.RefreshTokenRequest;
 import com.droneservice.droneservice.dto.response.JwtResponse;
 import com.droneservice.droneservice.service.AuthService;
 import com.droneservice.droneservice.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,9 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication Service Controller  ", description = "Auth Controller Exposes REST APIs for Account registration and authentication service")
+@ApiResponse(responseCode = "201",
+        description = "HTTP Status 201 Created")
 public class AuthController {
 
     @Autowired
@@ -52,4 +58,3 @@ public class AuthController {
     }
 
 }
-
